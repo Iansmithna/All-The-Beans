@@ -1,0 +1,36 @@
+<table class="table bg-white">
+  <thead>
+    <tr>
+      <th scope="col">
+        <div class="legend active-on-site"></div>
+        <small class="left-float">Active On Site</small>
+        
+        <div class="legend today"></div>
+        <small class="left-float">Today</small>
+      </th>
+      <th scope="col">Name</th>
+      <th scope="col">Aroma</th>
+      <th scope="col">Colour</th>
+      <th scope="col">Price</th>
+      <th scope="col">Day of Week</th>
+      <th scope="col" class="align-middle">
+        <a routerLink="/dashboard/add" class="btn active-on-site text-white border-secondary">Add New Bean</a>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let bean of beans" [ngClass]="{'active-on-site' : bean.activated && day == bean.dayOfWeek, 'today' : day == bean.dayOfWeek && !bean.activated}">
+      <td class="align-middle"><img src="{{bean.image}}" width="250px" height="200px"/></td>
+      <td class="align-middle">{{bean.name}}</td>
+      <td class="align-middle">{{bean.aroma}}</td>
+      <td class="align-middle">{{bean.colour}}</td>
+      <td class="align-middle">{{(bean.cost | number : '1.2') | currency: 'GBP'}}</td>
+      <td class="align-middle">{{beanService.getDayOfWeek(bean.dayOfWeek)}}</td>
+      <td class="align-middle">
+        <div class="btn-group">
+        <button data-toggle="modal" (click)="onEditBean(bean.id)" class="btn active-on-site text-white border-secondary">Edit</button><button class="btn btn-danger text-white border-secondary" (click)="onDeleteBean(bean.id)">Delete</button>
+      </div>
+    </td>
+    </tr>
+  </tbody>
+</table>

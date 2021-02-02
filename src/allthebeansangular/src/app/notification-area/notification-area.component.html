@@ -1,0 +1,6 @@
+<div class="alert alert-dismissible fade" [ngClass]="[dangerNotification ? 'show alert-danger' : 'hide', successNotification ? 'show alert-success' : 'hide']" role="alert">
+    {{alertText}}
+    <button type="button" class="close" (click)="toggleAll()" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>

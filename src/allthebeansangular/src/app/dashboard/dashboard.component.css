@@ -1,0 +1,26 @@
+.legend {
+    float:left;
+    width: 20px;
+    height: 20px;
+    margin: 5px;
+    border: 1px solid #000000;
+}
+
+.active-on-site{
+    background: #00aaff;
+}
+
+
+.today{
+    background: #f5f5f5;
+}
+
+.left-float{
+    float: left;
+}
+
+.center {
+    display: block;
+    margin: auto;
+    text-align: center;
+}

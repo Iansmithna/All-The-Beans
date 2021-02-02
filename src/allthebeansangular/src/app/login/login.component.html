@@ -1,0 +1,53 @@
+<div class="row justify-content-center align-self-center">
+    <div class="row">
+        <div class="shadow-lg card" style="width: 50rem;">
+            <div class="card-body">
+                <h5 class="card-title">Log in</h5>
+
+                <form [formGroup]="loginForm" >
+                <div class="form-group row">
+                    <label for="Username" class="col-4 col-form-label">Username</label>
+                    <div class="col-8">
+                        <div class="input-group">
+                            <input [ngClass]="{'alert-danger' : username.invalid}" id="username" name="username" type="text" class="form-control" required="required"
+                                formControlName="User">
+                        </div>
+                        <small *ngIf="username.invalid && (username.dirty || username.touched)" class="text-danger">
+                            <ng-container *ngIf="username.errors.required">
+                                Username field is required.
+                            </ng-container>
+                            <ng-container *ngIf="username.errors.minlength">
+                                Username should be more than 3 characters in length.
+                            </ng-container>
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="Password" class="col-4 col-form-label">Password</label>
+                    <div class="col-8">
+                        <div class="input-group">
+                            <input [ngClass]="{'alert-danger' : password.invalid}" id="Password" name="Password" type="password" class="form-control"
+                                required="required" formControlName="Pass">
+                        </div>
+                        
+                        <small *ngIf="password.invalid && (password.dirty || password.touched)" class="text-danger">
+                            <ng-container *ngIf="password.errors.required">
+                                Password field is required.
+                            </ng-container>
+                            <ng-container *ngIf="password.errors.minlength">
+                                Password should be more than 6 characters in length.
+                            </ng-container>
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-4 col-8">
+                        <input name="submit" type="button" class="btn btn-success" (click)="onSubmit()" value="Login"/>
+                    </div>
+                    <small>Don't have an account? <a routerLink="/register">Register</a></small>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

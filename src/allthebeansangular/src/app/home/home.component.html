@@ -1,0 +1,16 @@
+
+  <div class='center row h-100 justify-content-center align-items-center'>
+    <div class='rounded mx-auto col-sm-8'>
+      <div class="card" *ngIf="beanOfTheDay != null; else loading">
+        <img class="card-img-top" src="{{beanOfTheDay.image}}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{beanOfTheDay.name}}</h5>
+          <p class="card-text">{{beanOfTheDay.name}}'s aroma is {{beanOfTheDay.aroma}}, {{beanOfTheDay.colour}} bean.</p>
+          <p class="card-text">The price of this bean is £{{beanOfTheDay.cost}}</p>
+        </div>
+      </div>
+      <ng-template #loading>
+        <p class="text-center">There is no bean of the day</p>
+      </ng-template>
+    </div>
+  </div>

@@ -1,0 +1,112 @@
+<div class="row justify-content-center align-self-center">
+    <div class="row">
+        <div class="shadow-lg card" style="width: 69rem;">
+            <div class="card-body" >
+                <h5 class="card-title">Add Bean</h5>
+
+                <div class="form-group row alert alert-danger" *ngIf="error">
+                    <small>{{error}}</small>
+                </div>
+
+                <div class="row">
+                <form [formGroup]="addForm" (ngSubmit)="onSubmit()" class="col-8">
+
+                    <div class="form-group row">
+                        <label for="Name" class="col-4 col-form-label">Name</label>
+                        <div class="col-8">
+                            <input id="Name" name="Name" type="text" class="form-control" formControlName="Name" required="required" />
+                            <small *ngIf="(name.invalid && name.touched) || (name.invalid && formSubmitted)" class="text-danger">
+                                <ng-container *ngIf="name.errors.required">
+                                    This bean needs a name.
+                                </ng-container>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="aroma" class="col-4 col-form-label">Aroma</label>
+                        <div class="col-8">
+                            <input id="aroma" name="aroma" type="text" class="form-control" formControlName="Aroma">
+                            <small *ngIf="(aroma.invalid && aroma.touched) || (aroma.invalid && formSubmitted)" class="text-danger">
+                                <ng-container *ngIf="aroma.errors.required">
+                                    This field can not be empty.
+                                </ng-container>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="colour" class="col-4 col-form-label">Colour</label>
+                        <div class="col-8">
+                            <input id="colour" name="colour" type="text" class="form-control" formControlName="Colour">
+                            <small *ngIf="(colour.invalid && colour.touched) || (colour.invalid && formSubmitted)" class="text-danger">
+                                <ng-container *ngIf="colour.errors.required">
+                                    This field can not be empty.
+                                </ng-container>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="cost" class="col-4 col-form-label">Cost</label>
+                        <div class="col-8">
+                            <input id="cost" name="cost" type="number" class="form-control"  formControlName="Cost">
+                            <small *ngIf="(cost.invalid && cost.touched) || (cost.invalid && formSubmitted)" class="text-danger">
+                                <ng-container *ngIf="cost.errors.required">
+                                    This field can not be empty.
+                                </ng-container>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="DayShown" class="col-4 col-form-label">Day to be shown</label>
+                        <div class="col-8">
+                            <select id="DayShown" (change)="onSelectItemChange(addSelect.value)" #addSelect name="Day Shown" class="form-control" formControlName="DayOfWeek">
+                                <option value="1">Monday</option>
+                                <option value="2">Tuesday</option>
+                                <option value="3">Wednesday</option>
+                                <option value="4">Thursday</option>
+                                <option value="5">Friday</option>
+                                <option value="6">Saturday</option>
+                                <option value="7">Sunday</option>
+                            </select>
+                            <small *ngIf="dayOfWeekField.invalid && formSubmitted" class="text-danger">
+                                <ng-container *ngIf="dayOfWeekField.errors.required">
+                                    This bean needs an image.
+                                </ng-container>
+                            </small>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="activated" class="col-4 col-form-label">Live on site?</label>
+                        <div class="col-8">
+                            <select id="DayShown" (change)="onActiveItemChange(activeSelect.value)" #activeSelect name="Activated" class="form-control" formControlName="active">
+                                <option value="1">Live</option>
+                                <option value="2">Inactive</option>
+                            </select>
+                        </div>
+                      </div>
+                    <div class="form-group row">
+                        <label for="image" class="col-4 col-form-label">Image</label>
+                        <div class="col-8">
+                            <input id="image" name="image" type="file" accept="image/*" selected="1" class="form-control input-file" (change)="onImageChange($event)"  formControlName="Image"/>
+                            
+                            <small *ngIf="imageSourceField.invalid && formSubmitted" class="text-danger">
+                                <ng-container *ngIf="imageSourceField.errors.required">
+                                    This bean needs an image.
+                                </ng-container>
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="offset-4 col-8">
+                            <button name="submit" type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="col-2" *ngIf="imageSource != null">
+                    <img src="{{imageSource}}" width="350px">
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
